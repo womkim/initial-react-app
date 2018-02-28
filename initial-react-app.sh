@@ -1,24 +1,52 @@
-#！/bin/bash
+#!/usr/bin/env bash
 
 if [ $# -lt 1 ]; then
     echo "error.. need args, please input your project name."
     exit 1
 fi
 
-npm install create-react-app -g
+yarn_version=`yarn -v`
+if [ $? -ne 0 ];then
+  npm install yarn -g &>> initial.log
+  # exit 1
+fi
+cra_version=`create-react-app -V` 
+if [ $? -ne 0 ];then
+  npm install create-react-app -g &>> initial.log
+  # exit 1
+fi
 
-echo -e '\n start create react app...'
+echo -e '\n----------------------------------------------' &>> initial.log
+echo "yarn version" &>> initial.log
+yarn -v &>> initial.log
+echo "create-react-app version" &>> initial.log
+create-react-app -V &>> initial.log
+echo -e '\nstart create react app...'
+echo -e '\nstart create react app...' &>> initial.log
 
-create-react-app $1
+create-react-app $1 &>> initial.log
+if [ $? -ne 0 ];then
+  echo -e '\n failed! view more details in initial.log'
+  exit 2
+fi
 
-echo -e '\ninitializing environment ...\n\n'
-cd ./$1/
+echo -e '\ninitializing environment ...\n\n' &>> initial.log
+cd ./$1/ &>> initial.log
 
-yarn add react-router-dom redux react-redux redux-thunk antd
+yarn add react-router-dom redux react-redux redux-thunk antd &>> ../initial.log
+if [ $? -ne 0 ];then
+  echo -e '\n failed! view more details in initial.log'
+  exit 3
+fi
 
-yarn add --dev react-app-rewired react-app-rewire-less react-app-rewire-eslint babel-plugin-import eslint-config-standard@10.2.1 eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-plugin-react
+yarn add --dev react-app-rewired react-app-rewire-less react-app-rewire-eslint babel-plugin-import eslint-config-standard@10.2.1 eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-plugin-react &>> ../initial.log
+if [ $? -ne 0 ];then
+  echo -e '\n failed! view more details in initial.log'
+  exit 4
+fi
 
 echo -e '  -> configuring...\n'
+echo -e '  -> configuring...\n' &>> ../initial.log
 
 echo "const path = require('path')
 const { injectBabelPlugin } = require('react-app-rewired')
@@ -59,7 +87,7 @@ module.exports = function override (config, env) {
   return config
 }" > config-overrides.js
 
-echo -e '  -> configuring eslint...\n'
+echo -e '  -> configuring eslint...\n' &>> ../initial.log
 
 echo "// http://eslint.org/docs/user-guide/configuring
 module.exports = {
@@ -87,12 +115,12 @@ module.exports = {
   }
 }" > .eslintrc.js
 
-sed -i "s/react-scripts start/react-app-rewired start/g" package.json
-sed -i "s/react-scripts build/react-app-rewired build/g" package.json
-sed -i "s/react-scripts test/react-app-rewired test/g" package.json
-rm -rf ./src
+sed -i "s/react-scripts start/react-app-rewired start/g" package.json &>> ../initial.log
+sed -i "s/react-scripts build/react-app-rewired build/g" package.json &>> ../initial.log
+sed -i "s/react-scripts test/react-app-rewired test/g" package.json &>> ../initial.log
+rm -rf ./src &>> ../initial.log
 
-echo -e '\n\ninitializing source filesystem...\n\n'
+echo -e '\n\ninitializing source filesystem...\n\n' &>> ../initial.log
 
 echo -e '  -> create source folder...\n'
 mkdir src
@@ -358,9 +386,10 @@ export const DECREASE = 'decrease'
 export const CHANGENAME = 'change-name'
 
 export const LOADREDDIT = 'load-reddit'" > constants.js
-cd ../../
+cd ../../../
 
+echo -e '\nsimple file system have initialized...\n' &>> initial.log
 echo -e '\nsimple file system have initialized...\n'
+echo -e 'done.\n' &>> initial.log
 echo -e 'done.\n'
-echo 'exit after 3 seconds...'
-sleep 3
+
