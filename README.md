@@ -2,7 +2,12 @@
 
 为了简便操作，我们将自动初始化一个使用 `antd` 的 `react` 项目。
 
-只需下载本项目中的 [`initial-react-app.sh`](https://github.com/womkim/initial-react-app/archive/master.zip) 脚本保存到需要新建项目的目录下，命令运行该脚本，等待项目初始化完成便可运行项目。（请确保电脑上有 `node` 环境，并已安装 `yarn` ）
+只需下载本项目中的 [`initial-react-app.sh`](https://github.com/womkim/initial-react-app/archive/master.zip) 脚本保存到需要新建项目的目录下，命令运行该脚本，等待项目初始化完成便可运行项目。
+
+**使用前注意：**
+- 请确保电脑上有 `node` 环境，并已安装 `yarn`
+- 请确保全局 `npm` 写权限，当前目录写文件权限
+- 请确保网络畅通
 
 使用命令：（记得输入项目名称，这里 `project-name` 只是示例）
 
