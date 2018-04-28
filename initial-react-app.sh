@@ -64,6 +64,7 @@ module.exports = function override (config, env) {
   ], config)
 
   // 修改 antd 主题（或其他样式）配置
+  // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
   config = rewireLess.withLoaderOptions({
     modifyVars: {
       '@primary-color': '#ff9800',
