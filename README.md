@@ -2,7 +2,7 @@
 
 For the sake of simplicity, we will automatically initialize a `react` project that uses `antd`.
 
-Just download the [`initial-react-app.sh`] (https://github.com/womkim/initial-react-app/archive/master.zip) script from this project and save it to the directory where you need to create a new project. , the command runs the script and waits for the project to be initialized to run the project.
+Just download the [`initial-react-app.sh`](https://github.com/womkim/initial-react-app/archive/master.zip) script from this project and save it to the directory where you need to create a new project. , the command runs the script and waits for the project to be initialized to run the project.
 
 **Pay attention before use：**
 - Please make sure there is a `node` environment on your computer.
