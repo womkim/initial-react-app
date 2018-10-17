@@ -1,36 +1,36 @@
-## initial-react-app
+## initial-react-app （[点我查看中文文档](README.ZH.md)）
 
-为了简便操作，我们将自动初始化一个使用 `antd` 的 `react` 项目。
+For the sake of simplicity, we will automatically initialize a `react` project that uses `antd`.
 
-只需下载本项目中的 [`initial-react-app.sh`](https://github.com/womkim/initial-react-app/archive/master.zip) 脚本保存到需要新建项目的目录下，命令运行该脚本，等待项目初始化完成便可运行项目。
+Just download the [`initial-react-app.sh`] (https://github.com/womkim/initial-react-app/archive/master.zip) script from this project and save it to the directory where you need to create a new project. , the command runs the script and waits for the project to be initialized to run the project.
 
-**使用前注意：**
-- 请确保电脑上有 `node` 环境
-- 请确保全局 `npm` 写权限，当前目录写文件权限
-- 请确保网络畅通
-- `shell` 环境下运行
+**Pay attention before use：**
+- Please make sure there is a `node` environment on your computer.
+- Please ensure global `npm` write permission, current directory write file permissions
+- Please ensure that the network is unblocked
+- Running in `shell` environment
 
-使用命令：（记得输入项目名称，这里 `project-name` 只是示例）
+Use the command: (remember to enter the project name, here `project-name` is just an example)
 
 ```sh
 ./initial-react-app.sh project-name
 ```
 
-项目初始化完成后，进入到项目目录，可以直接运行项目：
+After the project is initialized, enter the project directory and run the project directly:
 
 ```
 cd ./project-name && yarn start
 ```
 
 
-#### 项目配置包括：
-- 使用 `react-router-dom`
-- 使用 `redux`
-- 使用 `redux-thunk` 中间件
-- 使用 `antd` 库，并已经配置好**按需加载**和**自定义主题**
-- 使用 `eslint` 的 [`standard`](https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style) 库规范代码
-- 使用 `less` 预编译语言
+#### Project configuration includes：
+- use `react-router-dom`
+- use `redux`
+- use `redux-thunk` middleware
+- use `antd` library，And already configured **Load on demand** and **Custom theme**
+- use `eslint` [`standard`](https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style) Library specification code
+- use `less` Precompiled language
 
-#### 更多说明：
-- [React 安装整理](./install.md)
-- [项目结构说明](./project.md)
+#### More instructions：
+- [React Installation and finishing](./install.md)
+- [Project structure description](./project.md)
