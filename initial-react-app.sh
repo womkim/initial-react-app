@@ -39,7 +39,7 @@ if [ $? -ne 0 ];then
   exit 3
 fi
 
-yarn add --dev react-app-rewired react-app-rewire-less react-app-rewire-eslint babel-plugin-import eslint-config-standard@10.2.1 eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-plugin-react &>> ../initial.log
+yarn add --dev react-app-rewired less less-loader babel-plugin-import eslint-config-standard@10.2.1 eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-plugin-react &>> ../initial.log
 if [ $? -ne 0 ];then
   echo -e '\n failed! view more details in initial.log'
   exit 4
@@ -49,45 +49,30 @@ echo -e '  -> configuring...\n'
 echo -e '  -> configuring...\n' &>> ../initial.log
 
 echo "const path = require('path')
-const { injectBabelPlugin } = require('react-app-rewired')
-const rewireLess = require('react-app-rewire-less')
-const rewireEslint = require('react-app-rewire-eslint')
+const { override, fixBabelImports, addLessLoader, useEslintRc, addWebpackResolve } = require('customize-cra')
 
-module.exports = function override (config, env) {
-  // 修改 babel 相关配置，如：配置使用 antd 库
-  config = injectBabelPlugin([
-    'import',
-    {
-      libraryName: 'antd',
-      style: true
-    }
-  ], config)
-
-  // 修改 antd 主题（或其他样式）配置
-  // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
-  config = rewireLess.withLoaderOptions({
+module.exports = override(
+  fixBabelImports('import', {
+    libraryName: 'antd',
+    libraryDirectory: 'es',
+    style: true,
+  }),
+  addLessLoader({
     javascriptEnabled: true,
+    // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
     modifyVars: {
       '@primary-color': '#ff9800',
       // 'link-color': '#1DA57A',
       // 'border-radius-base': '2px',
-    }
-  })(config, env)
-
-  // 使用 .eslintrc.js 配置文件对代码进行格式检查
-  config = rewireEslint(config, env)
-
-  // 修改全局依赖，添加 @ 为全局引用
-  config.resolve = {
-    ...config.resolve,
+    },
+  }),
+  useEslintRc(),
+  addWebpackResolve({
     alias: {
-      ...config.resolve.alias,
       '@': path.join(__dirname, 'src')
     }
-  }
-
-  return config
-}" > config-overrides.js
+  })
+)" > config-overrides.js
 
 echo -e '  -> configuring eslint...\n' &>> ../initial.log
 
@@ -103,7 +88,7 @@ module.exports = {
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: [
-    'standard', // 使用 standard 标准库
+    'react-app', standard', // 使用 standard 标准库
   ],
   // add your custom rules here
   rules: {
