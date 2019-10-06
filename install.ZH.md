@@ -61,7 +61,7 @@ module.exports = function override (config, env) {
     }
   ], config)
 
-  // 修改 `antd` 主题（或其他样式）配置
+  // Modify the `antd` theme (or other style) configuration
   config = rewireLess.withLoaderOptions({
     modifyVars: {
       '@primary-color': '#ff9800',
@@ -70,10 +70,10 @@ module.exports = function override (config, env) {
     }
   })(config, env)
 
-  // 使用 `.eslintrc.js` 配置文件对代码进行格式检查
+  // Format the code using the `.eslintrc.js` configuration file
   config = rewireEslint(config, env)
 
-  // 修改全局依赖，添加 `@` 为全局引用
+  // Modify global dependencies, add `@` as a global reference
   config.resolve = {
     ...config.resolve,
     alias: {
@@ -86,24 +86,24 @@ module.exports = function override (config, env) {
 }
 ```
 
-上面的配置完成后添加 `babel-plugin-import` 库可以使antd组件按需加载
+Adding the `babel-plugin-import` library after the above configuration is complete can make the antd component load on demand.
 
 ```sh
 yarn add --dev babel-plugin-import
 ```
 
-同时可以在配置里面修改自己需要的主题等样式配置。
+At the same time, you can modify the style configuration of the theme you need in the configuration.
 
-##### 使用 `eslint` 的 `standard` 模式进行编码规范
-（ps: 个人比较喜欢使用 `standard` 库） `standard` 库在当前（20180226） 11+ 版本会有点问题，这里使用 10+ 版本
+##### Encoding specification using `eslint` `standard` mode
+（ps: Personally prefer to use the `standard` library) `standard` library in the current (20180226) 11+ version will be a bit problem, here use the 10+ version
 
-下载 `eslint` 相关库
+Download `eslint` related library
 
 ```sh
 yarn add --dev eslint eslint-loader eslint-config-standard@10.2.1 eslint-plugin-standard eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-plugin-react
 ```
 
-在项目根目录下添加 `.eslintrc.js` 的配置文件，在里面添加相关配置：
+Add the configuration file `.eslintrc.js` in the project root directory and add the relevant configuration in it:
 
 ```js
 // http://eslint.org/docs/user-guide/configuring
@@ -118,7 +118,7 @@ module.exports = {
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: [
-    'standard', // 使用 standard 标准库
+    'standard', // Use standard standard library
   ],
   // add your custom rules here
   rules: {
@@ -134,4 +134,4 @@ module.exports = {
 ```
 
 
-下一篇：[项目结构说明](./project.md)
+Next: [Project Structure Description] (./project.md)
