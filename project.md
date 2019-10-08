@@ -1,6 +1,6 @@
-### 项目结构说明
+### Project structure description（[点我查看中文文档](project.ZH.md)）
 
-#### 项目目录配置
+#### Project directory configuration
 
 ```sh
   |~
@@ -43,10 +43,10 @@
 ```
 
 
-#### 项目入口配置
-在项目中配置 `redux` 、 `router` 相关信息，并可以引入全局自定义样式文件，以下是初始化时主要文件代码
+#### Project entry configuration
+Configure `redux`, `router` related information in the project, and can introduce global custom style files. The following is the main file code during initialization.
 
-- 总入口文件： `src/index.js`
+- Total entry file： `src/index.js`
 
 ```jsx
 
@@ -69,7 +69,7 @@ render(
 ```
 
 
-- 在 `router` 中设置组件异步加载： `src/router/AsyncComponent.js`
+- Set the component asynchronous load in `router`: `src/router/AsyncComponent.js`
 
 ```js
 
@@ -102,7 +102,7 @@ export default function asyncComponent (importComponent) {
 
 ```
 
-- 路由配置入口：`src/router/index.js`
+- Routing configuration entry：`src/router/index.js`
 
 ```js
 
@@ -128,7 +128,7 @@ export default router
 
 ```
 
-- 全局状态管理，当前应用状态：`src/store/app.js` （示例）
+- Global state management, current application state: `src/store/app.js` (example)
 
 ```js
 
@@ -176,7 +176,7 @@ export default combineReducers({
 
 ```
 
-- `redux` 相关配置，导出所有全局状态： `src/store/index.js`
+- `redux` Related configuration, export all global status： `src/store/index.js`
 
 ```js
 
@@ -200,7 +200,7 @@ export default store
 
 ```
 
-- 全局常量设置：`src/utils/constants.js` （示例）
+- Global constant setting：`src/utils/constants.js` （example）
 
 ```js
 
@@ -214,4 +214,4 @@ export const LOADREDDIT = 'load-reddit'
 ```
 
 
-上一篇：[React安装整理](./install.md)
+上一篇：[React installation](./install.md)
