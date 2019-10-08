@@ -185,7 +185,7 @@ import thunk from 'redux-thunk'
 
 import app from '@/store/app'
 
-// 导出所有状态内容
+// Export all status content
 const reducer = combineReducers({
   app
 })
